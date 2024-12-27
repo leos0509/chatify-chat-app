@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, 
+*::before,
+*::after {
+  
+  @apply box-border;
+  @apply m-0;
+  @apply p-0;
+}
+
+#root {
+  @apply bg-primary;
+}
+
+.container-p {
+  @apply px-8 md:px-12;
+  @apply py-20;
+}
