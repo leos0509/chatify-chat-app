@@ -13,30 +13,41 @@ import ProfilePage from "./pages/ProfilePage";
 import { useEffect } from "react";
 
 function App() {
-  const { authUser, isLoading, checkAuth, onlineUsers } = useAuthStore();
+  const { authUser, isLoading, checkAuth, isCheckingAuth } = useAuthStore();
   const { theme } = useThemeStore();
-
-  console.log(onlineUsers);
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
-  if (isLoading && !authUser) return <Loading />;
+  if (isCheckingAuth) return <Loading />;
 
   return (
-    <div data-theme={theme} className="flex flex-col items-center" >
-        <NavBar />
+    <div data-theme={theme} className="flex flex-col items-center h-screen">
+      <NavBar />
+      <div className="w-full overflow-y-scroll flex justify-center">
         <Routes>
-          <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/signin"/>}/>
-          <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/"/>} />
-          <Route path="/signin" element={!authUser ? <SignInPage /> : <Navigate to="/"/>} />
-          <Route path="/settings" element={<SettingPage />}/>
-          <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/signin"/>}/>
+          <Route
+            path="/"
+            element={authUser ? <HomePage /> : <Navigate to="/signin" />}
+          />
+          <Route
+            path="/signup"
+            element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/signin"
+            element={!authUser ? <SignInPage /> : <Navigate to="/" />}
+          />
+          <Route path="/settings" element={<SettingPage />} />
+          <Route
+            path="/profile"
+            element={authUser ? <ProfilePage /> : <Navigate to="/signin" />}
+          />
         </Routes>
-
-        <Toaster />
       </div>
+      <Toaster />
+    </div>
   );
 }
 

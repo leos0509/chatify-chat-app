@@ -11,6 +11,10 @@
   @apply p-0;
 }
 
+html {
+  overflow: hidden;
+}
+
 #root {
   @apply bg-primary;
 }

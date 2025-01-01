@@ -7,10 +7,10 @@ const Navbar = () => {
 
   return (
     <header
-      className="bg-base-100 border-b border-base-300 fixed w-full top-0 z-40 
-    backdrop-blur-lg bg-base-100/80 flex justify-center"
+      className="border-b border-base-300 sticky md:fixed w-full top-0 z-40 
+    backdrop-blur-lg bg-base-100/80 flex justify-center h-[10%] md:h-fit items-centers"
     >
-      <div className="max-w-[1440px] w-full px-8 md:px-12 h-16">
+      <div className="max-w-[1440px] w-full px-8 md:px-12 h-full py-4">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-8">
             <Link
